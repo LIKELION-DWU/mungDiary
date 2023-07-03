@@ -69,7 +69,7 @@ window.onload = function () {
     const whiteBoxContent = this.querySelector(".cont").textContent;
 
     window.location.href =
-      "/pages/check.html?id=" +
+      "/mungTeam/minwoo/pages/check.html?id=" +
       whiteBoxId +
       "&date=" +
       encodeURIComponent(whiteBoxDate) +
