@@ -4,5 +4,5 @@ from accounts import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('accounts.urls')), # accounts 앱 urls에서 직접관리
+    path('accounts/', include('accounts.urls', namespace='accounts')), # accounts 앱 urls에서 직접관리
 ]
