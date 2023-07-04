@@ -1,8 +1,13 @@
+//js 코드
 const loginForm = document.getElementById("login-form");
 const loginId = loginForm.querySelector("#input-id");
 const loginPwd = loginForm.querySelector("#input-psw");
-const loginButton = loginForm.querySelector("#btn-join");
+const loginButton = loginForm.querySelector("#btn-doLogin");
 
+//회원가입페이지로 가기 버튼
+const goJoinButton = document.getElementById("btn-join");
+
+//로그인 버튼
 function onLoginBtnClick() {
   const val_id = loginId.value;
   const val_pwd = loginPwd.value;
@@ -13,5 +18,11 @@ function onLoginBtnClick() {
     window.location.href = "main.html";
   }
 }
+
+function goJoinClick() {
+  window.location.href = "join.html";
+}
+
+goJoinButton.addEventListener("click", goJoinClick);
 
 loginButton.addEventListener("click", onLoginBtnClick);

@@ -33,7 +33,7 @@ function saveContent() {
   localStorage.setItem("dateVal", JSON.stringify(date));
   localStorage.setItem("contVal", JSON.stringify(content));
 
-  window.location.href = `/mungTeam/minwoo/pages/main.html?memo=${encodeURIComponent(
+  window.location.href = `/mungTeam/minwoo/pages/list-main.html?memo=${encodeURIComponent(
     JSON.stringify(newMemo)
   )}`;
 }

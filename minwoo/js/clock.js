@@ -1,3 +1,4 @@
+//js 코드
 const date = new Date();
 
 const year = date.getFullYear();

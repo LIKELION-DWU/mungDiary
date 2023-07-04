@@ -2,7 +2,7 @@
 const circleBtn = document.getElementById("write-form");
 
 function onClickBtn() {
-  window.location.href = "/mungTeam/minwoo/pages/write.html?${circle}";
+  window.location.href = "/mungTeam/minwoo/pages/write-list.html?${circle}";
 }
 
 circleBtn.addEventListener("click", onClickBtn);
