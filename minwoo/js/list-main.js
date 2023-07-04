@@ -7,7 +7,7 @@ const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth() + 1;
 const day = date.getDate();
-
+//위에 오늘 날짜 보이기
 document.getElementById("year").innerText = year;
 document.getElementById("month").innerText = month;
 document.getElementById("day").innerText = day;
@@ -27,13 +27,13 @@ window.onload = function () {
   }
 
   for (let i = memos.length - 1; i >= 0; i--) {
-    // white-box
     let whiteBox = document.createElement("div");
     whiteBox.classList.add("white-box");
 
     // box1 or box2 or box3
     let box = document.createElement("div");
     box.classList.add("box");
+
     // h2 : date
     let date = document.createElement("div");
     date.textContent = memos[i].date;
@@ -43,11 +43,12 @@ window.onload = function () {
     let line = document.createElement("div");
     line.classList.add("line");
 
-    // div : content
     let content = document.createElement("div");
     content.setAttribute("id", "content" + (i + 1));
     content.textContent = memos[i].content;
     content.classList.add("cont");
+
+    content.style.display = "none";
 
     box.append(date, line, content);
     whiteBox.append(box);
@@ -67,7 +68,6 @@ window.onload = function () {
     //console.log("whiteBoxId: ", whiteBoxId);
 
     const whiteBoxDate = this.querySelector(".totalDate").textContent;
-    //const whiteBoxContent = this.dataset.content;
     const whiteBoxContent = this.querySelector(".cont").textContent;
 
     window.location.href =
@@ -88,11 +88,10 @@ function goLogOutPage() {
 
 logOut.addEventListener("click", goLogOutPage);
 
-const ListBtn = document.getElementById("list-icon");
+const TileBtn = document.getElementById("tile");
 
-function changeIntoList() {
-  console.log("리스트 클릭");
-  window.location.href = "list-main.html";
+function changeIntoTile() {
+  window.location.href = "main.html";
 }
 
-ListBtn.addEventListener("click", changeIntoList);
+TileBtn.addEventListener("click", changeIntoTile);

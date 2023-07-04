@@ -92,14 +92,14 @@
       background: #fff;
     }
 
-    #btn-join {
+    #btn-doLogin {
       width: 235px;
-      height: 26px;
+      height: 29px;
 
-      margin-top: 20px;
-      margin-left: 35px;
+      margin-top: 15px;
+      margin-left: 43px;
       border: none;
-      border-radius: 6px;
+      border-radius: 10px;
       background: #4c7343;
 
       color: #fff;
@@ -110,21 +110,36 @@
       line-height: normal;
     }
 
-    #btn-find {
-      width: 235px;
-      height: 26px;
+    #btn-join {
+      position: relative;
+      width: 110px;
+      height: 18px;
 
-      margin-top: 6px;
-      margin-left: 35px;
+      margin-top: 50px;
       border: none;
-      border-radius: 6px;
-      background: #4c7343;
-
-      color: #fff;
-      font-size: 13px;
+      background: #ebebeb00;
+      font-size: 11px;
       font-family: Noto Sans;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    #btn-find {
+      position: relative;
+      width: 145px;
+      height: 18px;
+
+      margin-top: 0px;
+      margin-left: 38px;
+
+      border: none;
+      background: #4c734300;
+
+      font-size: 11px;
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: 600;
       line-height: normal;
     }
   </style>
@@ -142,10 +157,13 @@
             <p id="text-pw">PW</p>
             <input id="input-psw" type="password" />
           </div>
+          <div id="loginBtn-box">
+            <button id="btn-doLogin">로그인&nbsp;하기</button>
+          </div>
           <div>
             <button id="btn-join">회원&nbsp; 가입&nbsp; 하기</button>
+            <button id="btn-find">아이디/비밀번호&nbsp; 찾기</button>
           </div>
-          <div><button id="btn-find">아이디/비밀번호&nbsp; 찾기</button></div>
         </div>
       </div>
     </div>

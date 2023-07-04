@@ -1,3 +1,4 @@
+//js 코드__미완성(수정부분)
 const main = document.querySelector("#contain");
 const editBtn = document.querySelector("#reset");
 
