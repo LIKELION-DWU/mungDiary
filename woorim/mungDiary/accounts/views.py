@@ -24,8 +24,6 @@ def login(request):
             auth.login(request, user)
             print('로그인 성공')
             return redirect('home') ## 경로는 메인페이지로(세연이가 만든 메인페이지로 넘어가야됨)
-        #else: 
-            #return render(request, 'bad_login.html')
     else:
         return render(request, 'login.html') 
     
