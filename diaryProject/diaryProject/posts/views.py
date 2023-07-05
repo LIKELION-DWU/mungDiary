@@ -13,7 +13,7 @@ def create(request):
         if form.is_valid(): 
             # 유효하다면 저장하는 코드
             form.save() 
-            return redirect('home') 
+            return redirect('posts:home') 
     else:
         form = PostModelForm() 
     return render(request, 'write.html', {'form':form})
@@ -56,7 +56,7 @@ def create_comment(request, id):
         finished_form = filled_form.save(commit=False)      
         finished_form.article = get_object_or_404(Post, pk=id)        
         finished_form.save()   
-    return redirect('post_detail', id)
+    return redirect('posts:post_detail', id)
 
 
 def update_comment(request, post_id, com_id):
@@ -66,7 +66,7 @@ def update_comment(request, post_id, com_id):
         update_form = CommentForm(request.POST, instance=my_com)
         if update_form.is_valid():
             update_form.save()
-            return redirect('post_detail', post_id)
+            return redirect('posts:post_detail', post_id)
     else:
         return render(request, 'comment_update.html', {'comment_form' : comment_form})
     
@@ -75,4 +75,4 @@ def delete_comment(request, post_id, com_id):
     my_com = Comment.objects.get(id=com_id)
     my_com.delete()
 
-    return redirect('post_detail', post_id)
+    return redirect('posts:post_detail', post_id)

@@ -20,10 +20,19 @@
       <span class="word">일</span>
     </div>
     <div>
-      <div id="tile">타일</div>
+      <a href="{%url 'posts:home' %}">
+        <div id="tile">타일</div>
+      </a>
       <div id="list-icon">리스트</div>
     </div>
-    <article id="content-list"></article>
+    <article id="content-list" style="text-align: center;">
+      <div>
+        {% for post in posts %}
+        <!-- 댓글 개수 추가해야됨-->
+        <h4><a href="{% url 'posts:post_detail' post.id %}"> {{post.created_at}} </a></h4>
+        {% endfor %}
+      </div>
+    </article>
 
     <div id="green">
       <div id="green-section1">
@@ -43,7 +52,9 @@
         <span id="home">
           <img src="/static/images/home.png" style="width: 30px; height: 30px" />
         </span>
-        <div id="log-out">로그아웃</div>
+        <a href="{% url 'accounts:login' %}">
+          <div id="log-out">로그아웃</div>
+        </a>
       </div>
     </div>
   </div>

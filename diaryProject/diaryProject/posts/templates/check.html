@@ -12,68 +12,81 @@
 <body>
   <div id="contain">
     <div id="header">
-      <img id="trash-img" src="/mungTeam/minwoo/images/mdi_trash-can.png" style="width: 40px; height: 40px" />
+      <img id="trash-img" src="/static/images/mdi_trash-can.png" style="width: 40px; height: 40px" />
       <button id="reset"><b>수정</b></button>
     </div>
 
     <div id="white-box">
       <div id="id">id</div>
-      <div id="date">2023년 XX월 XX일</div>
+      <div id="date">{{post.created_at}}</div>
       <div id="line"></div>
+      {% if post.photo %}
+      <img src="{{ post.photo.url }}" alt="" height="220">
+      {% endif %}
       <div>
-        <textarea id="content">오늘 무슨 일이 있었냐면...</textarea>
+        {{post.body}}
       </div>
     </div>
 
     <div id="comment-box">
       <p id="comentNum">댓글(2)</p>
       <div id="send-box">
-        <input type="text" id="coment" placeholder="댓글을 입력해주세요" />
-        <div id="btn-box">
-          <img src="/mungTeam/minwoo/images/Send Button.png" id="send-btn" style="width: 25px; height: 25px" />
-        </div>
+        <form method="POST" action="{% url 'posts:create_comment' post.id %}">
+          {% csrf_token %}
+          <input type="text" name="comment" id="comment" placeholder="댓글을 입력해주세요" />
+          <div id="btn-box">
+            <input type="submit" value="댓글 작성">
+          </div>
+        </form>
       </div>
     </div>
 
+    {% for comment in post.comment_set.all %}
     <div id="coment1">
-      <img class="coment-img" src="/mungTeam/minwoo/images/Ellipse 3.png" style="width: 40px; height: 40px" />
-      <p class="coment-name">미영</p>
-      <div class="coment-write">왜 글을 쓰다마세요..</div>
+      <!--댓글 사진, 이것도 수정해야됨. 사진 안 뜸-->
+      <p class="coment-img" style="width: 40px; height: 40px">{{ comment.photo }}</p>
+      <!--댓글 작성자 추가해야됨-->
+      <!--댓글 내용-->
+      <div class="coment-write">{{ comment }}<br>
+        <a href="{% url 'posts:update_comment' post.id comment.id %}"> 수정 </a>
+        <a href="{% url 'posts:delete_comment' post.id comment.id %}"> 삭제 </a>
+      </div>
     </div>
-    <div id="coment2">
-      <img class="coment-img" src="/mungTeam/minwoo/images/Ellipse 3.png" style="width: 40px; height: 40px" />
-      <p class="coment-name">미영</p>
-      <div class="coment-write">더 써주세요...</div>
-    </div>
+    {% endfor %}
+
+
     <div id="green">
       <div id="green-section1">
         <span>
-          <img id="cal" src="/mungTeam/minwoo/images/cal.png" style="width: 65px; height: 65px" />
+          <img id="cal" src="/static/images/cal.png" style="width: 65px; height: 65px" />
         </span>
         <span>
-          <img id="circle" src="/mungTeam/minwoo/images/circle.png" style="width: 60px; height: 60px" />
+          <img id="circle" src="/static/images/circle.png" style="width: 60px; height: 60px" />
         </span>
         <span>
-          <img id="book" src="/mungTeam/minwoo/images/book.png" style="width: 40px; height: 40px" />
+          <img id="book" src="/static/images/book.png" style="width: 40px; height: 40px" />
         </span>
         <span>
-          <img id="tong" src="/mungTeam/minwoo/images/static.png" style="width: 37px; height: 37px" />
+          <img id="tong" src="/static/images/static.png" style="width: 37px; height: 37px" />
         </span>
       </div>
       <div id="green-section2">
         <span id="home">
-          <img src="/mungTeam/minwoo/images/home.png" style="width: 30px; height: 30px" />
+          <img src="/static/images/home.png" style="width: 30px; height: 30px" />
         </span>
-        <span id="setting">
-          <img src="/mungTeam/minwoo/images/setting.png" style="width: 30px; height: 30px" />
-        </span>
+        <!-- 여기왜..css가 안먹지..?-->
+        <a href="{% url 'accounts:login' %}">
+          <div id="log-out">로그아웃</div>
+        </a>
       </div>
     </div>
   </div>
 
+  <!--
   <script src="/mungTeam/minwoo/js/edit.js"></script>
   <script src="/mungTeam/minwoo/js/del.js"></script>
   <script src="/mungTeam/minwoo/js/check.js"></script>
+  -->
 </body>
 
 </html>

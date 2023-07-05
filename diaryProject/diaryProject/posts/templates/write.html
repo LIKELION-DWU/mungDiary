@@ -11,35 +11,37 @@
 
 <body>
   <!-- write body 코드 지우고 다시 작성-->
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div id="contain">
+      <div id="white">
+        <div class="date" id="created-at">
+          <!--시간 수정 해야 함-->
+          {{ post.created_at|date:"Y년 m월 d일 l요일" }}
+        </div>
+        <div id="line"></div>
 
-  <div id="contain">
-    <div id="white">
-      <div class="date">
-        <!--시간 수정 해야 함-->
-        {{ post.created_at|date:"Y년 m월 d일 l요일" }}
-      </div>
-      <div id="line"></div>
-      <div id="photo">
-        {% if form.photo.value %}
-        <img src="{{ form.photo.value.url }}" style="width: 100%;" />
-        {% else %}
-        사진
-        {% endif %}
-      </div>
-      <div>
-        <textarea id="content" name="{{ form.body.html_name }}" placeholder="오늘 무슨 일이 있었냐면..."
-          autofocus>{{ form.body.value }}</textarea>
-      </div>
-    </div>
+        <!--form-->
 
+        {% csrf_token %}
+        <div id="photo">
+          {% if form.photo.value %}
+          <img src="{{ form.photo.value.url }}" style="width: 100%;" />
+          {% else %}
+          사진
+          {% endif %}
+        </div>
+        <div>
+          <textarea id="content" name="{{ form.body.html_name }}" placeholder="오늘 무슨 일이 있었냐면..."
+            autofocus>{{ form.body.value }}</textarea>
+        </div>
+      </div>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
+      <!-- 저장 버튼으로 하지말고 form이니깐 submit로 해서 넘겨주기-->
       <div id="green">
-        <a href="{% url 'posts:home' %}">
+        <div id="save">
           <img id="circle" src="/static/images/circle.png" style="width: 60px; height: 60px" />
-          <div id="text-save" onclick="submitForm()"><b>저장</b></div>
-        </a>
+          <div id="text-save"><input type="submit" value="저장" /></div>
+        </div>
         <div id="green-section2">
           <span>
             <label for="id_photo" id="add-photo-label">
@@ -48,21 +50,10 @@
             </label>
             <input type="file" id="id_photo" name="{{ form.photo.html_name }}" style="display: none;" accept="image/*">
           </span>
-          <!--<span>
-            <img id="setting" src="/static/images/setting.png" style="width: 33px; height: 33px" />
-          </span>-->
         </div>
       </div>
-      <!--your-form-id부분에 내가 보내고자하는 아이디를 작성하면 된다는데..-->
-      <script>
-        function submitForm() {
-          document.getElementById("your-form-id").submit();
-        }
-      </script>
-    </form>
-
-
-  </div>
+    </div>
+  </form>
 </body>
 
 </html>
