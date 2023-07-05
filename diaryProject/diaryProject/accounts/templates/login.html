@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="{% static 'css/login(join).css' %}" rel="stylesheet" />
+  <title>로그인</title>
+</head>
+
+<body>
+  <div id="container">
+    <div id="green-box">
+      <p id="login-text2">로그인</p>
+      <form class="user" method="POST">
+        {% csrf_token %}
+        <div id="login-form">
+          <div>
+            <p id="text-id">ID</p>
+            <input id="input-id" type="text" name="username" />
+          </div>
+          <div>
+            <p id="text-pw">PW</p>
+            <input id="input-psw" type="password" name="password" />
+          </div>
+          <div id="loginBtn-box">
+            <input type="submit" value="로그인&nbsp;하기" id="btn-doLogin" />
+          </div>
+          <div>
+            <button id="btn-join"><a href="{% url 'accounts:signup'%}">회원&nbsp; 가입&nbsp; 하기</a></button>
+            <button id="btn-find">아이디/비밀번호&nbsp; 찾기</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--<script src="/mungTeam/minwoo/js/login.js"></script>-->
+</body>
+
+</html>
