@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="{% static 'css/login(join).css' %}" rel="stylesheet" />
+  <title>회원가입</title>
+</head>
+
+<body>
+  <div id="container">
+    <!--form이 두번 중첩 되어서 회원가입이 안되고 있었음..-->
+    <div id="green-box">
+      <p id="login-text">회원가입</p>
+      <form class="user" method="POST">
+        {% csrf_token %}
+        <div>
+          <p id="text-id">ID</p>
+          <input type="text" name="username" id="input-id" />
+        </div>
+        <div>
+          <p id="text-pw">PW</p>
+          <input type="password" name="password" id="input-psw" />
+        </div>
+        <div>
+          <input type="submit" value="등록" id="btn-save" />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

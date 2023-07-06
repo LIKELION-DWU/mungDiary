@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="{% static 'css/list-main.css' %}" rel="stylesheet" />
+  <title>리스트형식</title>
+</head>
+
+<body>
+  <div id="container">
+    <div class="date">
+      <span id="year"></span>
+      <span class="word">년</span>
+      <span id="month"></span>
+      <span class="word">월</span>
+      <span id="day"></span>
+      <span class="word">일</span>
+    </div>
+    <div>
+      <a href="{%url 'posts:home' %}">
+        <div id="tile">타일</div>
+      </a>
+      <div id="list-icon">리스트</div>
+    </div>
+    <article id="content-list" style="text-align: center;">
+      <div>
+        {% for post in posts %}
+        <!-- 댓글 개수 추가해야됨-->
+        <h4><a href="{% url 'posts:post_detail' post.id %}"> {{post.created_at}} </a></h4>
+        {% endfor %}
+      </div>
+    </article>
+
+    <div id="green">
+      <div id="green-section1">
+        <span>
+          <img id="cal" src="/static/images/cal.png" style="width: 65px; height: 65px" />
+        </span>
+        <span id="write-form">
+          <img id="circle" src="/static/images/circle.png" style="width: 60px; height: 60px" />
+
+          <img id="book" src="/static/images/book.png" style="width: 40px; height: 40px" />
+        </span>
+        <span>
+          <img id="tong" src="/static/images/static.png" style="width: 37px; height: 37px" />
+        </span>
+      </div>
+      <div id="green-section2">
+        <span id="home">
+          <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+        </span>
+        <a href="{% url 'accounts:login' %}">
+          <div id="log-out">로그아웃</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!--<script src="/mungTeam/minwoo/js/list-main.js"></script>
+  <script src="/mungTeam/minwoo/js/write-list.js"></script>-->
+</body>
+
+</html>

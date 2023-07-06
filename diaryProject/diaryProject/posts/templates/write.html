@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="{% static 'css/write.css' %}" rel="stylesheet" />
+  <title>작성하기</title>
+</head>
+
+<body>
+  <!-- write body 코드 지우고 다시 작성-->
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div id="contain">
+      <div id="white">
+        <div class="date" id="created-at">
+          <!--시간 수정 해야 함-->
+          {{ post.created_at|date:"Y년 m월 d일 l요일" }}
+        </div>
+        <div id="line"></div>
+
+        <!--form-->
+
+        {% csrf_token %}
+        <div id="photo">
+          {% if form.photo.value %}
+          <img src="{{ form.photo.value.url }}" style="width: 100%;" />
+          {% else %}
+          사진
+          {% endif %}
+        </div>
+        <div>
+          <textarea id="content" name="{{ form.body.html_name }}" placeholder="오늘 무슨 일이 있었냐면..."
+            autofocus>{{ form.body.value }}</textarea>
+        </div>
+      </div>
+
+      <!-- 저장 버튼으로 하지말고 form이니깐 submit로 해서 넘겨주기-->
+      <div id="green">
+        <div id="save">
+          <img id="circle" src="/static/images/circle.png" style="width: 60px; height: 60px" />
+          <div id="text-save"><input type="submit" value="저장" /></div>
+        </div>
+        <div id="green-section2">
+          <span>
+            <label for="id_photo" id="add-photo-label">
+              <img id="add-photo" src="/static/images/ic_round-image.png" style="width: 40px; height: 40px"
+                onclick="triggerFileInput()" />
+            </label>
+            <input type="file" id="id_photo" name="{{ form.photo.html_name }}" style="display: none;" accept="image/*">
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>

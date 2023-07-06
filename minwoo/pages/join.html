@@ -1,131 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입</title>
-  </head>
 
-  <style>
-    #container {
-      position: absolute;
-      width: 390px;
-      height: 838px;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+</head>
 
-      margin-left: 40%;
-      background: #eaeaea;
-    }
+<style>
+  #container {
+    position: absolute;
+    width: 390px;
+    height: 838px;
 
-    #green-box {
-      position: relative;
+    margin-left: 40%;
+    background: #eaeaea;
+  }
 
-      width: 299px;
-      height: 286px;
+  #green-box {
+    position: relative;
 
-      margin-top: 70%;
-      margin-left: 10%;
-      background: #aad6a0;
-      box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
-    }
+    width: 299px;
+    height: 286px;
 
-    #text-id {
-      display: inline-block;
-      width: 28px;
-      height: 20px;
+    margin-top: 70%;
+    margin-left: 10%;
+    background: #aad6a0;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  }
 
-      margin-left: 20px;
-      color: #4c7343;
-      font-size: 18px;
-      font-family: Noto Sans;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
+  #text-id {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
 
-    #text-pw {
-      display: inline-block;
-      width: 28px;
-      height: 20px;
+    margin-left: 20px;
+    color: #4c7343;
+    font-size: 18px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
 
-      margin-left: 13px;
-      color: #4c7343;
-      font-size: 18px;
-      font-family: Noto Sans;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 20px;
-    }
+  #text-pw {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
 
-    #login-text {
-      display: flex;
-      width: 130px;
-      height: 28px;
+    margin-left: 13px;
+    color: #4c7343;
+    font-size: 18px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
 
-      line-height: 60px;
-      margin-left: 115px;
+  #login-text {
+    display: flex;
+    width: 130px;
+    height: 28px;
 
-      color: #4c7343;
-      font-size: 20px;
-      font-family: Noto Sans;
-      font-weight: 900;
-    }
+    line-height: 60px;
+    margin-left: 115px;
 
-    #input-id {
-      width: 220px;
-      height: 28px;
-      flex-shrink: 0;
+    color: #4c7343;
+    font-size: 20px;
+    font-family: Noto Sans;
+    font-weight: 900;
+  }
 
-      border: none;
-      border-radius: 5px;
-      background: #fff;
-    }
+  #input-id {
+    width: 220px;
+    height: 28px;
+    flex-shrink: 0;
 
-    #input-psw {
-      width: 220px;
-      height: 28px;
-      flex-shrink: 0;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+  }
 
-      margin-left: 6px;
-      border: none;
-      border-radius: 5px;
-      background: #fff;
-    }
+  #input-psw {
+    width: 220px;
+    height: 28px;
+    flex-shrink: 0;
 
-    #btn-save {
-      width: 80px;
-      height: 56px;
+    margin-left: 6px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+  }
 
-      margin-top: 30px;
-      margin-left: 110px;
-      border: none;
-      border-radius: 6px;
-      background: #4c7343;
+  #btn-save {
+    width: 80px;
+    height: 56px;
 
-      color: #fff;
-      font-size: 13px;
-      font-family: Noto Sans;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-  </style>
+    margin-top: 30px;
+    margin-left: 110px;
+    border: none;
+    border-radius: 6px;
+    background: #4c7343;
 
-  <body>
-    <div id="container">
-      <div id="green-box">
-        <p id="login-text">회원가입</p>
-        <div>
-          <p id="text-id">ID</p>
-          <input type="text" id="input-id" />
-        </div>
-        <div>
-          <p id="text-pw">PW</p>
-          <input type="password" id="input-psw" />
-        </div>
-        <div>
-          <button id="btn-save"><b>등록</b></button>
-        </div>
+    color: #fff;
+    font-size: 13px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+</style>
+
+<body>
+  <div id="container">
+    <div id="green-box">
+      <p id="login-text">회원가입</p>
+      <div>
+        <p id="text-id">ID</p>
+        <input type="text" id="input-id" />
+      </div>
+      <div>
+        <p id="text-pw">PW</p>
+        <input type="password" id="input-psw" />
+      </div>
+      <div>
+        <button id="btn-save"><b>등록</b></button>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
