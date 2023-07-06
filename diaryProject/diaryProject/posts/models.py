@@ -5,18 +5,17 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     photo = models.ImageField(verbose_name="이미지", blank=True, null=True, upload_to='diary-photo')
     body = models.TextField(verbose_name="내용", default="")
+    writer = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     # 작성일가져오기
     created_at = models.DateTimeField(verbose_name="작성일", auto_now_add=True)
+    comment_count = models.IntegerField(verbose_name="댓글수", default=0)
 
     def __str__(self):
         return self.body
-    
 
 class Comment(models.Model):
-    photo = models.ImageField(verbose_name="이미지", blank=True, null=True, upload_to='photo')
     comment = models.CharField(max_length=200)
-    date = models.DateTimeField(auto_now_add=True)
-    article = models.ForeignKey(Post, on_delete=models.CASCADE)
+    writer = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     
     def __str__(self):
         return self.comment

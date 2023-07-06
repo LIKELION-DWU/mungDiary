@@ -17,39 +17,40 @@
     </div>
 
     <div id="white-box">
-      <div id="id">id</div>
       <div id="date">{{post.created_at}}</div>
       <div id="line"></div>
       {% if post.photo %}
-      <img src="{{ post.photo.url }}" alt="" height="220">
+        <img src="{{ post.photo.url }}" alt="" height="200">
       {% endif %}
-      <div>
+      <div id="content">
         {{post.body}}
       </div>
     </div>
 
     <div id="comment-box">
-      <p id="comentNum">댓글(2)</p>
-      <div id="send-box">
-        <form method="POST" action="{% url 'posts:create_comment' post.id %}">
-          {% csrf_token %}
-          <input type="text" name="comment" id="comment" placeholder="댓글을 입력해주세요" />
-          <div id="btn-box">
-            <input type="submit" value="댓글 작성">
+      <form method="POST" action="{% url 'posts:create_comment' post.id %}">
+        {% csrf_token %}
+        <p id="comentNum">댓글 {{ post.comment_count }}</p>
+        <div id="send-box">
+          <div>
+            <textarea id="coment" name="{{ form.comment.html_name }}" placeholder="댓글을 입력해주세요!"
+              autofocus>{{ form.comment.value }}</textarea>
           </div>
-        </form>
-      </div>
+          <input type="submit" value="업로드">
+        </div>
+      </form>
     </div>
 
     {% for comment in post.comment_set.all %}
     <div id="coment1">
       <!--댓글 사진, 이것도 수정해야됨. 사진 안 뜸-->
-      <p class="coment-img" style="width: 40px; height: 40px">{{ comment.photo }}</p>
+      <img class="coment-img" src="/static/images/Ellipse 3.png" style="width: 40px; height: 40px" />
       <!--댓글 작성자 추가해야됨-->
+      <p class="coment-name">{{ comment.writer }}</p>
       <!--댓글 내용-->
       <div class="coment-write">{{ comment }}<br>
-        <a href="{% url 'posts:update_comment' post.id comment.id %}"> 수정 </a>
-        <a href="{% url 'posts:delete_comment' post.id comment.id %}"> 삭제 </a>
+        <!--<a href="{% url 'posts:update_comment' post.id comment.id %}"> 수정 </a>
+        <a href="{% url 'posts:delete_comment' post.id comment.id %}"> 삭제 </a>-->
       </div>
     </div>
     {% endfor %}
@@ -75,7 +76,7 @@
           <img src="/static/images/home.png" style="width: 30px; height: 30px" />
         </span>
         <!-- 여기왜..css가 안먹지..?-->
-        <a href="{% url 'accounts:login' %}">
+        <a href="{% url 'accounts:logout' %}">
           <div id="log-out">로그아웃</div>
         </a>
       </div>

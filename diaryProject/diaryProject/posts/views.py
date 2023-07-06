@@ -18,8 +18,12 @@ def create(request):
         form = PostModelForm() 
     return render(request, 'write.html', {'form':form})
 
+def post_main(request):
+    posts = Post.objects.all()
+    return render(request, 'main.html', {'posts':posts})
+
 def post_list(request):
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all()
     return render(request, 'list_main.html', {'posts':posts})
 
 def post_detail(request, id):
@@ -37,25 +41,27 @@ def post_update(request, id):
         form = PostModelForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('post_list')
+            return redirect('posts:home')
     else:
         form = PostModelForm(instance=post)
-        return render(request, 'main.html', {'form':form, 'id':id})
+        return render(request, 'write.html', {'form':form, 'id':id})
     
 
 def post_delete(request, id):
     post = Post.objects.get(pk=id)
     post.delete()
-    return redirect('post_list')
+    return redirect('posts:post_list')
 
 
 def create_comment(request, id):
     filled_form = CommentForm(request.POST)
 
-    if filled_form.is_valid():        
+    if filled_form.is_valid():
+        post = Post.objects.get(pk=id)        
         finished_form = filled_form.save(commit=False)      
         finished_form.article = get_object_or_404(Post, pk=id)        
-        finished_form.save()   
+        finished_form.save()
+        post.comment_count = post.comment_count + 1
     return redirect('posts:post_detail', id)
 
 
