@@ -11,4 +11,4 @@ class PostModelForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta: 
         model = Comment 
-        fields = ['photo', 'comment']
+        fields = ['comment']
