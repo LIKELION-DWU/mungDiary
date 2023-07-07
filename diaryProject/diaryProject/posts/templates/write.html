@@ -21,19 +21,17 @@
         </div>
         <div id="line"></div>
 
-        <form action="" method="POST">
           <div id="photo">
-            {% if form.photo.value %}
-            <img src="{{ form.photo.value.url }}" style="width: 100%;" />
+            {% if request.FILES.photo %}
+              <img src="{{ form.photo.value.url }}" style="width: 100%;" />
             {% else %}
             사진
             {% endif %}
           </div>
           <div>
             <textarea id="content" name="{{ form.body.html_name }}" placeholder="오늘 무슨 일이 있었냐면..."
-              autofocus>{{ form.body.value }}</textarea>
+              autofocus>{{ post.body.value }}</textarea>
           </div>
-        </form>
       </div>
 
       <!-- 저장 버튼으로 하지말고 form이니깐 submit로 해서 넘겨주기-->

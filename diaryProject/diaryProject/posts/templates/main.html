@@ -25,14 +25,16 @@
       </a>
       <div id="tile">타일</div>
     </div>
+
     <article id="content-list">
-      <div class="white-box">
+      <div>
         {% for post in posts %}
-        <a href="{% url 'posts:post_detail' post.id %}">
-          <h4><a href="{% url 'posts:post_detail' post.id %}"> {{post.created_at}} </a></h4>
-          <div id="line"></div>
-          {{ post.body}}
-        </a>
+        <div class="white-box">
+          <a href="{% url 'posts:post_detail' post.id %}">
+            <div id="line"></div>
+            {{ post.body}}
+          </a>
+        </div>
         {% endfor %}
       </div>
     </article>
@@ -54,10 +56,15 @@
           <img id="tong" src="/static/images/static.png" style="width: 37px; height: 37px" />
         </span>
       </div>
+
+      <!--홈, 로그아웃-->
       <div id="green-section2">
         <span id="home">
-          <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+          <a href="{% url 'posts:home' %}">
+            <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+          </a>
         </span>
+
         <a href="{% url 'accounts:logout' %}">
           <div id="log-out">로그아웃</div>
         </a>
@@ -65,8 +72,8 @@
     </div>
   </div>
 
-  <!--<script src="/mungTeam/minwoo/js/main.js"></script>-->
-  <!--<script src="/mungTeam/minwoo/js/wrtie.js"></script>-->
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/wrtie.js"></script>
 </body>
 
 </html>
