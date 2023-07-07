@@ -25,12 +25,14 @@
       </a>
       <div id="list-icon">리스트</div>
     </div>
+    
     <article id="content-list" style="align-items: center;">
       <div>
         {% for post in posts %}
-        <!-- 댓글 개수 추가해야됨-->
-        <a href="{% url 'posts:post_detail' post.id %}"> {{post.created_at}} </a>
-        <p id="comentNum">{{ post.comment_count }}</p>
+        <a href="{% url 'posts:post_detail' post.id %}">
+          <span>{{ post.created_at }}</span>
+          <span>{{ post.comment_count }}</span>
+        </a>
         <hr id="line">
         {% endfor %}
       </div>
@@ -51,10 +53,16 @@
           <img id="tong" src="/static/images/static.png" style="width: 37px; height: 37px" />
         </span>
       </div>
+      
+      <!-- 홈, 로그아웃 -->
       <div id="green-section2">
         <span id="home">
+          <a href="{% url 'posts:home' %}">
           <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+          </a>
         </span>
+
+
         <a href="{% url 'accounts:logout' %}">
           <div id="log-out">로그아웃</div>
         </a>
@@ -62,8 +70,8 @@
     </div>
   </div>
 
-  <!--<script src="/mungTeam/minwoo/js/list-main.js"></script>
-  <script src="/mungTeam/minwoo/js/write-list.js"></script>-->
+  <script src="/static/js/list-main.js"></script>
+  <script src="/static/js/write-list.js"></script>
 </body>
 
 </html>

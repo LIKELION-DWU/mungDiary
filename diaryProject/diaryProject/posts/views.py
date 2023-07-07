@@ -27,7 +27,11 @@ def post_list(request):
     return render(request, 'list_main.html', {'posts':posts})
 
 def post_detail(request, id):
-    post = get_object_or_404(Post, pk=id)
+    try:
+        post = get_object_or_404(Post, pk=id)
+    except Post.DoesNotExist:
+        return redirect('posts') 
+
     comment_form = CommentForm()
     context={
         'post':post,

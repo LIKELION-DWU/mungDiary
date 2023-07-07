@@ -11,30 +11,41 @@
 
 <body>
   <div id="contain">
-    <div id="header">
-      <img id="trash-img" src="/static/images/mdi_trash-can.png" style="width: 40px; height: 40px" />
-      <button id="reset"><b>수정</b></button>
-    </div>
-
-    <div id="white-box">
-      <div id="date">{{post.created_at}}</div>
-      <div id="line"></div>
-      {% if post.photo %}
-        <img src="{{ post.photo.url }}" alt="" height="200">
-      {% endif %}
-      <div id="content">
-        {{post.body}}
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div id="header">
+        <img id="trash-img" src="/static/images/mdi_trash-can.png" style="width: 40px; height: 40px" />
+        <button id="reset"><a href="{% url 'posts:post_update' post.id %}"><b>수정</b></a></button>
       </div>
-    </div>
 
+
+      <div id="white-box">
+        <div id="date">{{post.created_at}}</div>
+        <div id="line"></div>
+        <div>
+          {% if post.photo %}
+          <p align="center">
+            <img src="{{ post.photo.url }}" width="200px" height="200px">
+          </p>
+          {% endif %}
+        </div>
+        <div id="content" style="align-items: center;">
+          {{post.body}}
+        </div>
+      </div>
+    </form>
+
+    <!-- 댓글 -->
     <div id="comment-box">
       <form method="POST" action="{% url 'posts:create_comment' post.id %}">
         {% csrf_token %}
-        <p id="comentNum">댓글 {{ post.comment_count }}</p>
+        {% if comments %}
+        <p id="comentNum">댓글 {{ comments|length}}</p>
+        {% endif %}
         <div id="send-box">
           <div>
             <textarea id="coment" name="{{ form.comment.html_name }}" placeholder="댓글을 입력해주세요!"
-              autofocus>{{ form.comment.value }}</textarea>
+              autofocus>{{form.comment.value  }}</textarea>
           </div>
           <input type="submit" value="업로드">
         </div>
@@ -73,8 +84,11 @@
       </div>
       <div id="green-section2">
         <span id="home">
-          <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+          <a href="{% url 'posts:home' %}">
+            <img src="/static/images/home.png" style="width: 30px; height: 30px" />
+          </a>
         </span>
+
         <!-- 여기왜..css가 안먹지..?-->
         <a href="{% url 'accounts:logout' %}">
           <div id="log-out">로그아웃</div>
